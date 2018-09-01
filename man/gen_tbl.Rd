@@ -20,8 +20,9 @@ A tibble with \code{n} rows and \code{nchar(types)} columns.
 Generates a tibble of \code{n} rows with user-specified column types.
 }
 \examples{
-library(genr)
+\donttest{
 # A tibble with 42 rows and one character, one date and one integer column
 gen_tbl(42, "cDi")
+}
 
 }

@@ -19,7 +19,9 @@ A tibble with \code{n} rows and \code{length(gens)} columns.
 Generates a tibble of \code{n} rows with user-specified columns.
 }
 \examples{
+\donttest{
 # A tibble with 7 rows and one column with logical values
 gen_tbl_cust(7, list(function(n) sample(c(FALSE, TRUE), n, replace = TRUE)))
+}
 
 }

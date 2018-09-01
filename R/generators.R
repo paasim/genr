@@ -33,9 +33,10 @@ process_types <- compose(partial(map, .f = ~type_map[[.x]]), str_to_chr)
 #'  available are c = character, i = integer, d = double, l = logical, D = date.
 #
 #' @examples
-#' library(genr)
+#' \donttest{
 #' # A tibble with 42 rows and one character, one date and one integer column
 #' gen_tbl(42, "cDi")
+#' }
 #'
 #' @return A tibble with \code{n} rows and \code{nchar(types)} columns.
 #'
@@ -51,8 +52,10 @@ gen_tbl <- function(n, types) gen_tbl_cust(n, process_types(types))
 #'  which are used to generate the columns.
 #
 #' @examples
+#' \donttest{
 #' # A tibble with 7 rows and one column with logical values
 #' gen_tbl_cust(7, list(function(n) sample(c(FALSE, TRUE), n, replace = TRUE)))
+#' }
 #'
 #' @return A tibble with \code{n} rows and \code{length(gens)} columns.
 #'
