@@ -1,8 +1,27 @@
 library(tibble)
 library(purrr)
+
+context("gen_num")
+test_that("generating numbers seems to work as expected", {
+  n <- 13L
+  integers <- gen_nat(n)
+  expect_true(class(integers) == "integer")
+  expect_true(length(integers) == n)
+  expect_true(all(integers) >= 0L)
+})
+
+context("gen_lst")
+test_that("generating from a discrete set seems to work as expected", {
+  n <- 29L
+  set <- letters
+  generated_set <- gen_lst(set)(n)
+  expect_true(class(generated_set) == class(set))
+  expect_true(length(generated_set) == n)
+  expect_true(all(generated_set %in% set))
+})
+
 context("tbl_gen")
 test_that("tbl_gen produces a tibble as expected", {
-  # c = character, i = integer, d = double, l = logical, D = date.
   n <- 42L
   cols <- "ccidlD"
   tbl1 <- gen_tbl(n, cols)
