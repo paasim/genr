@@ -1,0 +1,19 @@
+Package: genr
+Type: Package
+Title: An R package for generating tibbles 
+Version: 0.1.0
+Author: Markus Paasiniemi [aut]
+Maintainer: Markus Paasiniemi <paasim@iki.fi>
+Description:
+    Generate tibbles with user-specified column types or functions to
+    custom generators for any column type. 
+License: MIT + file LICENSE
+Imports:
+    purrr
+Encoding: UTF-8
+LazyData: true
+Suggests:
+    testthat,
+    tibble,
+    covr
+RoxygenNote: 6.1.0
