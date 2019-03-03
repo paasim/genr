@@ -5,7 +5,8 @@
 #' @docType package
 #' @name genr
 #'
-#' @importFrom purrr compose flatten_chr invoke_map_dfc map map_chr partial
+#' @importFrom purrr compose exec flatten_chr map map_chr partial
 #' @importFrom stats rcauchy
+#' @importFrom tibble as_tibble tibble
 #'
 NULL

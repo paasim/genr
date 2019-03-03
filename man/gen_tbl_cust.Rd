@@ -13,7 +13,8 @@ gen_tbl_cust(n, gens)
 which are used to generate the columns.}
 }
 \value{
-A tibble with \code{n} rows and \code{length(gens)} columns.
+A [tibble][tibble::tibble-package] with \code{n} rows and
+\code{length(gens)} columns.
 }
 \description{
 Generates a tibble of \code{n} rows with user-specified columns.

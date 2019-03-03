@@ -14,7 +14,8 @@ follows the convention specified in the \code{readr}-package and the types
 available are c = character, i = integer, d = double, l = logical, D = date.}
 }
 \value{
-A tibble with \code{n} rows and \code{nchar(types)} columns.
+A [tibble][tibble::tibble-package] with \code{n} rows and
+\code{nchar(types)} columns.
 }
 \description{
 Generates a tibble of \code{n} rows with user-specified column types.

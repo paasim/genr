@@ -9,7 +9,7 @@ gen_lgl <- gen_lst(c(FALSE, TRUE))
 
 # generate words and character vectors
 gen_word <- compose(partial(paste0, collapse = ""), gen_lst(letters))
-gen_chr <- compose(partial(map_chr, .f = gen_word), gen_lst(9))
+gen_chr <- compose(~map_chr(.x, gen_word), gen_lst(9))
 
 # generate dates
 gen_date <- compose(partial(as.Date, origin = "2000-01-01"), gen_nat)
@@ -21,7 +21,7 @@ type_map <- list(c = gen_chr, d = gen_dbl, D = gen_date,
 # splits a string into list of characters
 str_to_chr <- compose(flatten_chr, partial(strsplit, split = ""))
 # map the types-string into a list of corresponding generator-functions
-process_types <- compose(partial(map, .f = ~type_map[[.x]]), str_to_chr)
+process_types <- compose(~map(.x, ~type_map[[.x]]), str_to_chr)
 
 #' Generate a tibble
 #'
@@ -38,7 +38,8 @@ process_types <- compose(partial(map, .f = ~type_map[[.x]]), str_to_chr)
 #' gen_tbl(42, "cDi")
 #' }
 #'
-#' @return A tibble with \code{n} rows and \code{nchar(types)} columns.
+#' @return A [tibble][tibble::tibble-package] with \code{n} rows and
+#' \code{nchar(types)} columns.
 #'
 #' @export
 gen_tbl <- function(n, types) gen_tbl_cust(n, process_types(types))
@@ -57,7 +58,11 @@ gen_tbl <- function(n, types) gen_tbl_cust(n, process_types(types))
 #' gen_tbl_cust(7, list(function(n) sample(c(FALSE, TRUE), n, replace = TRUE)))
 #' }
 #'
-#' @return A tibble with \code{n} rows and \code{length(gens)} columns.
+#' @return A [tibble][tibble::tibble-package] with \code{n} rows and
+#' \code{length(gens)} columns.
 #'
 #' @export
-gen_tbl_cust <- function(n, gens) invoke_map_dfc(gens, n)
+gen_tbl_cust <- function(n, gens) {
+  if (is.null(names(gens))) names(gens) <- paste0("V", seq_along(gens))
+  as_tibble(map(gens, exec, n))
+}
