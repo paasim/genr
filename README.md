@@ -1,6 +1,6 @@
 # genr
 
-[![Build Status](https://travis-ci.org/paasim/genr.svg?branch=master)](https://travis-ci.org/paasim/genr)
+[![R build status](https://github.com/paasim/genr/workflows/R-CMD-check/badge.svg)](https://github.com/paasim/genr/actions)
 [![Coverage Status](https://img.shields.io/codecov/c/github/paasim/genr/master.svg)](https://codecov.io/github/paasim/genr?branch=master)
 
 A small package for generating tibbles.
